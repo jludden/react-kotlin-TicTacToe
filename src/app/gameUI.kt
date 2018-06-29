@@ -10,7 +10,6 @@ fun RBuilder.gameUI(g: Game, listener: CellClickListener) {
 //        h1 { +"Hello world" }
         gameBoard(g, listener)
 
-
     }
 }
 
@@ -38,7 +37,8 @@ private fun RBuilder.gameBoard(g: Game, listener: CellClickListener) {
     }
 }
 
-private fun RDOMBuilder<DIV>.square(squares: Array<Char?>, listener: CellClickListener, i: Int) {
+private fun RDOMBuilder<DIV>.square(squares: Array<Char?>,
+                                    listener: CellClickListener, i: Int) {
     div("square") {
         button {
             +"${squares[i]}"

@@ -1,3 +1,8 @@
+# React-Kotlin-TicTacToe
+Simple Tic-Tac-Toe game written in React and Kotlin. Kotlin adds type-safety using DSLs to React code. Compare with the plain JS version here: [react-Tic-Tac-Toe](https://github.com/jludden/tic-tac-toe-react)
+
+To learn more about Kotlin-React I highly recommend [this KotlinConf 2017 video].
+
 This project was bootstrapped with [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app).
 
 Below you will find some useful information on how to work with this application.<br>
