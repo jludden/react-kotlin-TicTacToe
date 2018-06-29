@@ -1,11 +1,26 @@
 package app
 
 class Game(
-        val history: ArrayList<CharArray> = ArrayList<CharArray>(),
+        val history: ArrayList<Array<Char?>> = arrayListOf(arrayOfNulls(9)),
         val stepNumber: Int = 0,
         val xIsNext: Boolean = true) {
 
-    fun calculateWinner(squares: CharArray) : Winner {
+    fun nextMove(i: Int) {
+
+        val squares = history[stepNumber]
+        if (calculateWinner(squares) != null
+           || squares[i] != null ) return
+
+        squares[i] = if(xIsNext) 'X' else 'O'
+
+//        val c : Array<Char?> = arrayOfNulls(9)
+
+
+    }
+
+
+
+    fun calculateWinner(squares: Array<Char?>) : Char? {
         val lines = arrayOf(
                 arrayOf(0, 1, 2),
                 arrayOf(3, 4, 5),
@@ -20,17 +35,9 @@ class Game(
         for (i in 0..lines.size) {
             val (a, b, c) = lines[i] //kotlin destructuring declaration
             if (squares[a] == squares[b] && squares[a] == squares[c]) {
-                return when(squares[a]) {
-                    'X' -> Winner.X
-                    'O' -> Winner.O
-                    else -> Winner.NONE
-                }
+                return squares[a]
             }
         }
-        return Winner.NONE
-    }
-
-    enum class Winner {
-        X, O, NONE
+        return null
     }
 }

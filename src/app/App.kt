@@ -1,9 +1,6 @@
 package app
 
 import react.*
-import react.dom.*
-import logo.*
-import ticker.*
 
 interface AppState : RState {
     var g: Game
@@ -11,14 +8,37 @@ interface AppState : RState {
 
 class App : RComponent<RProps, AppState>() {
 
-
     override fun AppState.init() {
         g = Game()
     }
 
     override fun RBuilder.render() {
-        gameUI(state.g)
+        gameUI(state.g, object:CellClickListener {
+            override fun cellClick(i: Int) {
+                setState {
+                    g.nextMove(i)
+
+//                    console.log("button click $i")
+//                    g.history[g.stepNumber][i] = 'Z'
+//
+//                    g.apply {
+//                        val squares = history[stepNumber]
+//                        if (calculateWinner(squares) != null
+//                                || squares[i] != ' ' ) {
+//
+//                        }
+//                        else {
+//
+//                            squares[i] = 'x'
+//
+//                        }
+//                    }
+
+
+                }
+            }
+        })
     }
 }
 
-fun RBuilder.app() = child(App::class) {}
+fun RBuilder.app() = child(App::class) { }
